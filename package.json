@@ -7,7 +7,7 @@
     "start": "node dist/server.js",
     "build": "tsc",
     "watch": "tsc-watch --esModuleInterop src/server.ts --outDir ./dist --onSuccess \"node ./dist/server.js\"",
-    "test": "jasmine-ts",
+    "test": "jasmine",
     "lint-fix": "eslint . --fix --ext .ts",
     "dev": "nodemon src/server.ts"
   },
