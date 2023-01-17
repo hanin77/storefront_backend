@@ -14,7 +14,7 @@ const show = async (_req: Request, res: Response) => {
   if (_req.params.id && parseInt(_req.params.id)) {
     const user = await store.show(_req.params.id)
     if (user) {
-      return res.json(user)
+      return res.status(200).json({ status: 'success', data: user })
     }
     return res.status(404).json({
       status: 'fail',
