@@ -10,7 +10,7 @@ describe('User Model', () => {
     password: 'password123'
   }
   afterEach(async () => {
-    const sql = 'DELETE FROM users'
+    const sql = 'TRUNCATE TABLE users CASCADE'
     const conn = await Client.connect()
     await conn.query(sql)
     conn.release()
