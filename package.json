@@ -7,9 +7,10 @@
     "start": "node dist/server.js",
     "build": "tsc",
     "watch": "tsc-watch --esModuleInterop src/server.ts --outDir ./dist --onSuccess \"node ./dist/server.js\"",
-    "test": "set NODE_ENV=test && npm run build && jasmine",
+    "test": "set NODE_ENV=test && db-migrate up && npm run build && jasmine",
     "lint-fix": "eslint . --fix --ext .ts",
-    "dev": "nodemon src/server.ts"
+    "migrate-db-up": "db-migrate up",
+    "migrate-db-down": "db-migrate down"
   },
   "author": "Udacity",
   "license": "ISC",
@@ -27,7 +28,6 @@
     "@types/bcrypt": "^5.0.0",
     "@types/express": "4.17.9",
     "@types/jasmine": "^4.3.1",
-    "jasmine-ts": "^0.3.0",
     "@types/jsonwebtoken": "^9.0.1",
     "@types/node": "^18.11.18",
     "@types/pg": "^8.6.6",
@@ -38,7 +38,7 @@
     "eslint-plugin-prettier": "4.0.0",
     "jasmine": "^4.5.0",
     "jasmine-spec-reporter": "^7.0.0",
-    "nodemon": "^2.0.20",
+    "jasmine-ts": "^0.3.0",
     "prettier": "^2.8.2",
     "ts-node": "^10.9.1",
     "tsc-watch": "^4.2.9"
