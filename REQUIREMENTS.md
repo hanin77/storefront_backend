@@ -26,28 +26,35 @@ POST http://localhost:3000/users/login
 - Current Order by user (args: user id)[token required]
 - [OPTIONAL] Completed Orders by user (args: user id)[token required]
 
-## Data Shapes
+## Database schema
 
 ![DB Schema](./tt%20-%20public.png 'Optional title')
 
+## Data Shapes
+
 #### Product
 
-- id
-- name
-- price
-- [OPTIONAL] category
+- id SERIAL PK
+- name VARCHAR(100)
+- price REAL
+- category VARCHAR(50)
 
 #### User
 
-- id
-- firstName
-- lastName
-- password
+- id SERIAL PK
+- firstName VARCHAR(100)
+- lastName VARCHAR(100)
+- password VARCHAR(255)
 
 #### Orders
 
-- id
-- id of each product in the order
-- quantity of each product in the order
-- user_id
-- status of order (active or complete)
+- id SERIAL PK
+- user_id INT FK
+- status BOOLEAN (active or complete)
+
+#### Order_products
+
+- id SERIAL PK,
+- quantity REAL,
+- order_id INT FK,
+- product_id INT FK,
