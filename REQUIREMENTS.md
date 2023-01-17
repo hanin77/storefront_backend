@@ -16,9 +16,10 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 #### Users
 
-- Index [token required]
-- Show [token required]
-- Create N[token required]
+GET http://localhost:3000/users
+GET http://localhost:3000/users/:userid
+POST http://localhost:3000/users
+POST http://localhost:3000/users/login
 
 #### Orders
 
