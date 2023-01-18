@@ -1,6 +1,6 @@
  CREATE TABLE IF NOT EXISTS order_products(
     id SERIAL PRIMARY KEY,
-    quantity real,
+    quantity real NOT NULL,
     order_id INT NOT NULL,
     product_id INT NOT NULL,
     FOREIGN KEY (order_id) REFERENCES orders(id),
