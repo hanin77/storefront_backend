@@ -17,3 +17,4 @@ app.all('*', (req, res) => {
 app.listen(3000, function () {
   console.log(`starting app on: ${address}`)
 })
+export default app
