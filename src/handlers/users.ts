@@ -38,7 +38,7 @@ const create = async (req: Request, res: Response) => {
         password
       })
       const token = jwt.sign(
-        { username: newUser.username },
+        { id: newUser.id },
         process.env.TOKEN_SECRET as string
       )
       return res.status(200).json({ status: 'success', data: { token } })
