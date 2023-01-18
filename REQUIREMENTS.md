@@ -130,27 +130,28 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 #### Product
 
-- id SERIAL PK
-- name VARCHAR(100)
-- price REAL
+- id SERIAL PK NOT NULL
+- name VARCHAR(100) NOT NULL
+- price REAL NOT NULL
 - category VARCHAR(50)
 
 #### User
 
-- id SERIAL PK
-- firstName VARCHAR(100)
-- lastName VARCHAR(100)
-- password VARCHAR(255)
+- id SERIAL PK NOT NULL
+- username VARCHAR(100) UNIQUE NOT NULL
+- firstName VARCHAR(100) NOT NULL
+- lastName VARCHAR(100) NOT NULL
+- password VARCHAR(255) NOT NULL
 
 #### Orders
 
-- id SERIAL PK
-- user_id INT FK
+- id SERIAL PK NOT NULL
+- user_id INT FK NOT NULL
 - status BOOLEAN (active or complete)
 
 #### Order_products
 
-- id SERIAL PK,
-- quantity REAL,
-- order_id INT FK,
-- product_id INT FK,
+- id SERIAL PK NOT NULL
+- quantity REAL NOT NULL
+- order_id INT FK NOT NULL
+- product_id INT FK NOT NULL
