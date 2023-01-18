@@ -16,10 +16,106 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 #### Users
 
-GET http://localhost:3000/users
-GET http://localhost:3000/users/:userid
-POST http://localhost:3000/users
-POST http://localhost:3000/users/login
+1.  index
+    GET http://localhost:3000/users (**token rquired**)
+    - **_response body_**: multiple users found
+      ```
+        {
+        "status": "success",
+        "data": [
+            {
+                "id": 7,
+                "username": "mohan0",
+                "firstname": "mo0",
+                "lastname": "han0"
+            },
+            {
+                "id": 9,
+                "username": "mohan2",
+                "firstname": "mo2",
+                "lastname": "han2"
+            }
+        ]
+        }
+      ```
+    - **_response body_**: no users found
+      ```
+        {
+            "status": "success",
+            "data": []
+        }
+      ```
+2.  show
+    GET http://localhost:3000/users/:userid (**token rquired**)
+    - **_response body_**: user not found
+      ```
+        {
+            status: 'fail',
+            message: `user with id: userid not found`
+        }
+      ```
+    - **_response body_**: user found
+      ```
+        {
+            "status": "success",
+            "data": {
+                "id": 7,
+                "username": "mohan0",
+                "firstname": "mo0",
+                "lastname": "han0"
+            }
+        }
+      ```
+    - **_response body_**: missing token
+      ```
+        {
+            "status": "fail",
+            "message": "invalid token, log in and try again"
+        }
+      ```
+3.  create
+    **username, password, firstname and lastname are required fields**
+    POST http://localhost:3000/users
+
+    - **_response body_**: successful request
+
+      ```
+        {
+            "status": "success",
+            "data": {
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1vaGFuMyIsImlhdCI6MTY3Mzk5NTMyN30.wdeVrzKPvviIev9N67qtQ5CpWY050OlRWiUXmstLLj8"
+            }
+        }
+      ```
+
+    - **_response body_**: missing username
+
+      ```
+        {
+            "status": "fail",
+            "message": "not all required fields where provided"
+        }
+      ```
+
+4.  login
+    **username, password are required fields**
+    POST http://localhost:3000/users/login
+    - **_response body_**: successful login
+      ```
+        {
+            "status": "success",
+            "data": {
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImlhdCI6MTY3Mzk5NjU5MH0. EuLUB4Gtjie0tkX34LfI1SwgQInaRYa-wsz66oQA3Yg"
+            }
+        }
+      ```
+    - **_response body_**: failed login weong password
+      ```
+        {
+            "status": "fail",
+            "message": "username or password is incorrect!"
+        }
+      ```
 
 #### Orders
 
