@@ -7,7 +7,7 @@
     "start": "node dist/server.js",
     "build": "tsc",
     "watch": "tsc-watch --esModuleInterop src/server.ts --outDir ./dist --onSuccess \"node ./dist/server.js\"",
-    "test": "set NODE_ENV=test && db-migrate up && npm run build && jasmine && db-migrate reset",
+    "test": "set NODE_ENV=test && db-migrate --env test up && npm run build && jasmine && db-migrate --env test reset",
     "lint-fix": "eslint . --fix --ext .ts",
     "migrate-db-up": "db-migrate up",
     "migrate-db-down": "db-migrate down",
