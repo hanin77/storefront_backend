@@ -8,11 +8,110 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 #### Products
 
-- Index
-- Show
-- Create [token required]
-- [OPTIONAL] Top 5 most popular products
-- [OPTIONAL] Products by category (args: product category)
+1. Index
+   GET http://localhost:3000/products
+
+   - **_response body_**: multiple products found
+     ```
+        {
+          "status": "success",
+          "data": [
+            {
+              "id": 6,
+              "name": "p1",
+              "category": "CAT1",
+              "price": 10
+            },
+            {
+              "id": 7,
+              "name": "p2",
+              "category": "CAT2",
+              "price": 100
+            }
+          ]
+        }
+     ```
+   - **_response body_**: no products found
+     ```
+         {
+           "status": "success",
+           "data": []
+         }
+     ```
+
+2. Show
+   GET http://localhost:3000/products/:product_id
+   - **_response body_**: product not found
+     ```
+       {
+       "status": "fail",
+       "message": "product with id: 555 not found"
+       }
+     ```
+   - **_response body_**: product found
+     ```
+       {
+         "status": "success",
+         "data": {
+           "id": 6,
+           "name": "p1",
+           "category": "CAT1",
+           "price": 10
+         }
+       }
+     ```
+3. Create
+   **name, price are required fields**.
+   POST http://localhost:3000/products (**token rquired**)
+
+   - **_response body_**: successful request
+
+     ```
+        {
+          "status": "success",
+          "data": {
+            "id": 9,
+            "name": "p1",
+            "category": "toy",
+            "price": 12
+          }
+        }
+     ```
+
+   - **_response body_**: failed request
+
+     ```
+         {
+           "status": "fail",
+           "message": "not all required fields where provided"
+         }
+     ```
+
+4. [OPTIONAL] Top 5 most popular products
+5. [OPTIONAL] Products by category (args: product category)
+   GET http://localhost:3000/products?category=CAT1
+
+   - **_response body_**: multiple products found
+
+     ```
+       {
+         "status": "success",
+         "data": [
+           {
+             "id": 6,
+             "name": "p1",
+             "category": "CAT1",
+             "price": 10
+           },
+           {
+             "id": 8,
+             "name": "p3",
+             "category": "CAT1",
+             "price": 200
+           }
+         ]
+       }
+     ```
 
 #### Users
 
