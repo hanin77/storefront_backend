@@ -17,9 +17,12 @@ export class OrderStore {
   async getUserCurrentActiveOrder(id: number) {
     try {
       const conn = await Client.connect()
-      const sql = `SELECT * FROM orders o join order_products op on op.order_id = o.id 
+      const sql = `SELECT o.id as id, o.status as status, o.user_id as user_id, 
+                        op.product_id as product_id,p.name as name,p.price as price,
+                        op.quantity as quantity
+                        FROM orders o join order_products op on op.order_id = o.id 
                         join products p on p.id = op.product_id
-                        WHERE user_id = ($1) and status = true limit 1
+                        WHERE user_id = ($1) and status = true
         `
       const { rows } = await conn.query(sql, [id])
       if (rows && rows.length) {
