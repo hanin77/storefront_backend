@@ -28,5 +28,6 @@
 ## Test the server
 
 1. make sure you created a test db referenced in the .env file POSTGRES_TEST_DB.
+2. also make sure to stop the watch script if it's runing because supertest is using the same port.
 
-2. simply run the command `npm run test` to run all tests
+3. simply run the command `npm run test` to run all tests
