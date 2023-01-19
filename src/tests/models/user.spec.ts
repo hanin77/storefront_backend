@@ -85,7 +85,7 @@ describe('User Model', () => {
       expect(result.id).toEqual(userTarget.id)
     })
     it('should return undefined when the user not found', async () => {
-      const userTarget: User = await UserStoreInstance.create(user)
+      await UserStoreInstance.create(user)
       const result = await UserStoreInstance.show('99')
       expect(result).toBeUndefined()
     })
@@ -100,7 +100,7 @@ describe('User Model', () => {
       expect(result.username).toEqual(userTarget.username)
     })
     it('should return null when the user password incorrect', async () => {
-      const userTarget: User = await UserStoreInstance.create(user)
+      await UserStoreInstance.create(user)
       const result = await UserStoreInstance.authenticate(
         user.username,
         'wrong password'
