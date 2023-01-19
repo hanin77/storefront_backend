@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express'
 import bodyParser from 'body-parser'
 import userRoutes from './routes/usersRoutes'
+import productRoutes from './routes/productsRoutes'
 
 const app: express.Application = express()
 const port = process.env.PORT || 3000
@@ -11,6 +12,7 @@ app.get('/', function (req: Request, res: Response) {
   res.send('Hello World!')
 })
 app.use('/users', userRoutes)
+app.use('/products', productRoutes)
 app.all('*', (req, res) => {
   return res.status(404).json(`Can't find ${req.originalUrl} on this server!`)
 })
