@@ -251,10 +251,6 @@ These are the notes from a meeting with the frontend developer that describe wha
           }
        ```
 
-     ```
-
-     ```
-
 2. [OPTIONAL] Completed Orders by user (args: user id)[token required]
 
 ## Database schema
