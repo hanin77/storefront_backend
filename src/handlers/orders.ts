@@ -13,7 +13,7 @@ const userCurrentActiveOrder = async (_req: Request, res: Response) => {
     }
     return res.status(404).json({
       status: 'fail',
-      message: `user with id: ${id} has no current active orders`
+      message: `user with id: ${id} has no current active order`
     })
   } catch (err) {
     return res.json({ status: 'fail', message: err })
