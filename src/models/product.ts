@@ -8,7 +8,7 @@ export type Product = {
 }
 
 export class ProductStore {
-  async index(category: string): Promise<Product[]> {
+  async index(category?: string): Promise<Product[]> {
     try {
       const conn = await Client.connect()
       const sql = category
