@@ -218,8 +218,44 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 #### Orders
 
-- Current Order by user (args: user id)[token required]
-- [OPTIONAL] Completed Orders by user (args: user id)[token required]
+1. Current Order by user (args: user id)[token required]
+   GET http://localhost:3000/orders/users/:user-id (**token rquired**)
+
+   - **_response body_**: user has no active order
+
+     ```
+       {
+         "status": "fail",
+         "message": "user with id: 3 has no current active order"
+       }
+     ```
+
+     - **_response body_**: user has an active order
+
+       ```
+        {
+            "status": "success",
+            "data": {
+              "id": 6,
+              "status": true,
+              "user_id": "1",
+              "products": [
+                {
+                  "id": 6,
+                  "name": "p1",
+                  "price": 10,
+                  "quantity": 200
+                }
+              ]
+            }
+          }
+       ```
+
+     ```
+
+     ```
+
+2. [OPTIONAL] Completed Orders by user (args: user id)[token required]
 
 ## Database schema
 
